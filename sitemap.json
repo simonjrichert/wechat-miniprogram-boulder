@@ -1,0 +1,9 @@
+{
+  "desc": "Allow WeChat to index every page of this event.",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

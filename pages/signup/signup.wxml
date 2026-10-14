@@ -1,0 +1,84 @@
+<view class="page" style="padding-top: {{pad}}px;">
+  <nav-bar back="{{true}}" title="Reserve" />
+
+  <text class="kicker">{{event.series}}</text>
+  <text class="lead">{{editing ? 'Edit your pass' : 'Reserve a wave'}}</text>
+  <text class="sub">{{event.dateLabel}} · {{event.area}}</text>
+  <text wx:if="{{editing}}" class="keep">The door code stays the same.</text>
+
+  <view class="block">
+    <text class="label">Wave</text>
+    <view
+      wx:for="{{event.waves}}"
+      wx:key="id"
+      class="choice {{sessionId === item.id ? 'on' : ''}}"
+      bindtap="pickWave"
+      data-id="{{item.id}}"
+    >
+      <text class="choice-name">{{item.name}} · {{item.time}}</text>
+      <text class="choice-meta">{{item.note}} {{item.cap}}.</text>
+    </view>
+  </view>
+
+  <view class="block">
+    <text class="label">Level</text>
+    <view
+      wx:for="{{event.levels}}"
+      wx:key="id"
+      class="choice {{levelId === item.id ? 'on' : ''}}"
+      bindtap="pickLevel"
+      data-id="{{item.id}}"
+    >
+      <text class="choice-name">{{item.label}}</text>
+      <text class="choice-meta">{{item.hint}}</text>
+    </view>
+  </view>
+
+  <view class="block">
+    <text class="label">Name</text>
+    <input
+      class="field"
+      maxlength="24"
+      placeholder="Name on the pass"
+      placeholder-class="ph"
+      value="{{name}}"
+      bindinput="onName"
+    />
+  </view>
+
+  <view class="block">
+    <text class="label">Mobile</text>
+    <input
+      class="field"
+      maxlength="20"
+      type="text"
+      placeholder="Mobile number"
+      placeholder-class="ph"
+      value="{{phone}}"
+      bindinput="onPhone"
+    />
+  </view>
+
+  <view class="block">
+    <text class="label">Shoes</text>
+    <view class="choice {{rental ? 'on' : ''}}" bindtap="toggleRental">
+      <text class="choice-name">{{rental ? 'Rent a pair' : 'I will bring mine'}}</text>
+      <text class="choice-meta">Rental is included. EU 35–47. Tap to switch.</text>
+    </view>
+    <picker wx:if="{{rental}}" mode="selector" range="{{shoeSizes}}" value="{{sizeIndex}}" bindchange="onSize">
+      <view class="field picker">EU {{shoeSizes[sizeIndex]}}</view>
+    </picker>
+  </view>
+
+  <view class="agree" bindtap="toggleWaiver">
+    <view class="tick {{waiver ? 'on' : ''}}">
+      <view wx:if="{{waiver}}" class="tick-mark"></view>
+    </view>
+    <text class="agree-copy">I am 16 or older. I will not use a torch, phone light, or flash on the wall.</text>
+  </view>
+
+  <text wx:if="{{error}}" class="error">{{error}}</text>
+
+  <button class="btn submit" hover-class="btn-hover" bindtap="submit">{{editing ? 'Update pass' : 'Reserve'}}</button>
+  <text class="fine">Your name, mobile, and pass stay on this phone. Nothing is sent to a server yet.</text>
+</view>

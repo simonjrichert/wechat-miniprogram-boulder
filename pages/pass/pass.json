@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "Your pass",
+  "usingComponents": {
+    "nav-bar": "/components/nav-bar/nav-bar"
+  },
+  "backgroundColor": "#07060b",
+  "backgroundColorTop": "#07060b",
+  "backgroundColorBottom": "#07060b",
+  "backgroundTextStyle": "light"
+}

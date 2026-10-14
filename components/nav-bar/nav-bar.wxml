@@ -1,0 +1,15 @@
+<view class="nav" style="padding-top: {{status}}px;">
+  <view class="bar" style="height: {{bar}}px; padding-right: {{padRight}}px;">
+    <view class="side">
+      <view wx:if="{{back}}" class="back" hover-class="back-hover" bindtap="onBack">
+        <view class="chevron"></view>
+        <text>Back</text>
+      </view>
+      <view wx:else class="brand">
+        <text class="word">LUMEN</text>
+        <view class="dot"></view>
+      </view>
+    </view>
+    <text wx:if="{{title}}" class="nav-title">{{title}}</text>
+  </view>
+</view>

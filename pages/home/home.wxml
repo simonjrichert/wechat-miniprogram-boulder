@@ -1,0 +1,126 @@
+<view class="page" style="padding-top: {{pad}}px;">
+  <nav-bar />
+
+  <view class="hero">
+    <view class="orb orb-a"></view>
+    <view class="orb orb-b"></view>
+
+    <view class="hero-top">
+      <text class="kicker">{{event.series}}</text>
+      <view class="date-badge">
+        <text class="date-day">{{event.day}}</text>
+        <text class="date-mon">{{event.month}}</text>
+      </view>
+    </view>
+
+    <text class="title">{{event.titleTop}}</text>
+    <text class="title accent">{{event.titleSub}}</text>
+    <text class="zh">{{event.zh}}</text>
+    <text class="when">{{event.dateLabel}} · {{event.area}}</text>
+
+    <view class="facts">
+      <view class="fact">
+        <text class="fact-k">Doors</text>
+        <text class="fact-v">{{event.doors}}</text>
+      </view>
+      <view class="fact">
+        <text class="fact-k">On the wall</text>
+        <text class="fact-v">90 min</text>
+      </view>
+      <view class="fact">
+        <text class="fact-k">Ticket</text>
+        <text class="fact-v">¥{{event.price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="wall">
+    <text class="stamp">UV ONLY</text>
+    <view class="tape tape-a"></view>
+    <view class="tape tape-b"></view>
+    <view class="tape tape-c"></view>
+    <view
+      wx:for="{{event.holds}}"
+      wx:key="id"
+      class="hold tone-{{item.tone}} shape-{{item.shape}}"
+      style="left: {{item.x}}rpx; top: {{item.y}}rpx; width: {{item.size}}rpx; height: {{item.size}}rpx;"
+    ></view>
+  </view>
+  <text class="caption">Holds and tape fluoresce. The room stays dark.</text>
+
+  <view class="section">
+    <text class="h">The night</text>
+    <view class="slot" wx:for="{{event.timeline}}" wx:key="t">
+      <text class="slot-t">{{item.t}}</text>
+      <text class="slot-d">{{item.d}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="h">Waves</text>
+    <text class="intro">The room holds 24 climbers a wave, so the wall stays uncrowded.</text>
+    <view
+      wx:for="{{event.waves}}"
+      wx:key="id"
+      class="wave {{booking && booking.sessionId === item.id ? 'mine' : ''}}"
+      hover-class="wave-hover"
+      bindtap="chooseWave"
+      data-id="{{item.id}}"
+    >
+      <view class="wave-top">
+        <text class="wave-name">{{item.name}}</text>
+        <text class="wave-go">{{booking && booking.sessionId === item.id ? 'Your wave' : 'Choose'}}</text>
+      </view>
+      <text class="wave-time">{{item.time}}</text>
+      <text class="wave-note">{{item.note}} {{item.cap}}.</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="h">The ticket</text>
+    <view class="price-row">
+      <text class="big">¥{{event.price}}</text>
+      <text class="per">{{event.priceNote}}</text>
+    </view>
+    <view class="inc" wx:for="{{event.includes}}" wx:key="*this">
+      <view class="pip"></view>
+      <text class="inc-t">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="h">On the wall</text>
+    <view class="rule" wx:for="{{event.rules}}" wx:key="*this">
+      <view class="dash"></view>
+      <text class="rule-t">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="h">The room</text>
+    <view class="place">
+      <text class="place-name">{{event.venue}}</text>
+      <text class="place-line">{{event.gate}}</text>
+      <text class="place-line">{{event.gateZh}}</text>
+      <text class="place-dim">{{event.area}} · {{event.city}}</text>
+      <text class="place-note">Wave 2 check-in opens at 20:00 and closes at 20:20. Come at 18:10 if you are renting shoes.</text>
+    </view>
+  </view>
+</view>
+
+<view class="dock">
+  <block wx:if="{{booking}}">
+    <view class="dock-copy">
+      <text class="dock-code">{{booking.code}}</text>
+      <text class="dock-sub">{{booking.sessionName}} · {{booking.sessionTime}}</text>
+    </view>
+    <button class="btn" hover-class="btn-hover" bindtap="goPass">View pass</button>
+  </block>
+  <block wx:else>
+    <view class="dock-copy">
+      <text class="dock-code">¥{{event.price}}</text>
+      <text class="dock-sub">{{event.duration}} · Yangpu</text>
+    </view>
+    <button class="btn" hover-class="btn-hover" bindtap="goSignup">Reserve</button>
+  </block>
+</view>

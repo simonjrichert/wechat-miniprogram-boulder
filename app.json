@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/signup/signup",
+    "pages/pass/pass"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTitleText": "LUMEN Night",
+    "navigationBarBackgroundColor": "#07060b",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#07060b",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

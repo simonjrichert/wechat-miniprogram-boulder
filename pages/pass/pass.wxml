@@ -1,0 +1,65 @@
+<view class="page" style="padding-top: {{pad}}px;">
+  <nav-bar back="{{true}}" title="Your pass" />
+
+  <block wx:if="{{booking}}">
+    <text wx:if="{{fresh}}" class="saved">Pass saved on this phone.</text>
+
+    <view class="pass">
+      <view class="pass-bar"></view>
+      <view class="pass-body">
+        <text class="series">{{event.series}}</text>
+        <text class="night">Blacklight</text>
+        <text class="zh">{{event.doorZh}}</text>
+
+        <view class="code-wrap" bindtap="copyCode">
+          <text class="code">{{booking.code}}</text>
+          <text class="code-hint">Tap the code to copy</text>
+        </view>
+
+        <view class="row">
+          <text class="k">Name</text>
+          <text class="v">{{booking.name}}</text>
+        </view>
+        <view class="row">
+          <text class="k">When</text>
+          <text class="v">{{event.dateLabel}}</text>
+        </view>
+        <view class="row">
+          <text class="k">Wave</text>
+          <text class="v">{{booking.sessionName}} · {{booking.sessionTime}}</text>
+        </view>
+        <view class="row">
+          <text class="k">Level</text>
+          <text class="v">{{booking.levelLabel}}</text>
+        </view>
+        <view class="row">
+          <text class="k">Shoes</text>
+          <text class="v">{{shoeLine}}</text>
+        </view>
+        <view class="row" bindtap="togglePhone">
+          <text class="k">Mobile</text>
+          <text class="v">{{phoneOpen ? booking.phone : masked}}</text>
+        </view>
+        <text class="phone-hint">{{phoneOpen ? 'Tap to hide the number' : 'Tap the number to show it'}}</text>
+
+        <view class="where">
+          <text class="where-name">{{event.venue}}</text>
+          <text class="where-line">{{event.gate}}</text>
+          <text class="where-line">{{event.gateZh}}</text>
+          <text class="where-door">{{door}}</text>
+        </view>
+      </view>
+    </view>
+
+    <text class="fine">Show this screen at the desk. It is stored on this phone only.</text>
+
+    <button class="ghost wide" hover-class="ghost-hover" bindtap="edit">Change reservation</button>
+    <button class="text-btn" bindtap="cancel">Give up this spot</button>
+  </block>
+
+  <block wx:else>
+    <text class="lead">No pass on this phone</text>
+    <text class="sub">Reserve a wave and the door code will show up here.</text>
+    <button class="btn empty-btn" hover-class="btn-hover" bindtap="goSignup">Reserve</button>
+  </block>
+</view>
