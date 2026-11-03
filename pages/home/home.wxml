@@ -89,12 +89,12 @@
   </view>
 
   <view class="section">
-    <text class="h">The room</text>
+    <text class="h">The location</text>
     <view class="place">
       <text class="place-name">{{event.venue}}</text>
       <text class="place-line">{{event.gateZh}}</text>
       <text class="place-dim">{{event.city}}</text>
-      <text class="place-note">Doors at 18:40. Shoe sizes are sorted at the desk.</text>
+      <text class="place-note">Entry at 19:00. Shoe sizes are sorted at the desk.</text>
     </view>
   </view>
 </view>

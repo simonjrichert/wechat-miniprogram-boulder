@@ -9,7 +9,7 @@ const event = {
   dateLabel: 'Friday',
   day: '11',
   month: 'DEC',
-  doors: '18:40',
+  doors: '19:00',
   duration: '90 min',
   price: 0,
   priceNote: 'Sponsors pay for the night.',
@@ -50,13 +50,13 @@ const event = {
     }
   ],
   timeline: [
-    { t: '18:40', d: 'Doors. Liquid chalk and shoe sizes at the desk.' },
-    { t: '19:00', d: 'On the wall. The lights stay down until 21:00.' },
-    { t: '21:00', d: 'Out. The gym lights come back on.' }
+    { t: '19:00', d: 'Entry. Liquid chalk and shoe sizes at the desk.' },
+    { t: '19:15', d: 'Climbing starts. 90 minutes on the wall.' },
+    { t: '21:00', d: 'End of the event. The gym lights come back on.' }
   ],
   includes: [
     '90 minutes on the UV wall',
-    'Liquid chalk — loose chalk hangs in the beam',
+    'Liquid chalk',
     'Shoe rental, EU 35–47'
   ],
   rules: [

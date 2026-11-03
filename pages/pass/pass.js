@@ -9,8 +9,8 @@ function maskPhone(phone) {
 
 function doorHint(booking) {
   if (!booking) return ''
-  if (booking.rental) return 'Come at 18:40 for shoe sizes.'
-  return 'Doors at 18:40.'
+  if (booking.rental) return 'Come at 19:00 for shoe sizes.'
+  return 'Entry at 19:00.'
 }
 
 Page({
