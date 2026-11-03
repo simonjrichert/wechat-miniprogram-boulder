@@ -80,10 +80,18 @@
   color: #3dfff2;
 }
 
+.meta-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 36rpx;
+}
+
 .zh {
   display: block;
   position: relative;
-  margin-top: 40rpx;
+  margin-top: 0;
+  margin-right: 16rpx;
   color: #c6ff4a;
   font-size: 28rpx;
   letter-spacing: 2rpx;
@@ -92,7 +100,7 @@
 .when {
   display: block;
   position: relative;
-  margin-top: 16rpx;
+  margin-top: 0;
   color: #b7b1c9;
   font-size: 26rpx;
 }

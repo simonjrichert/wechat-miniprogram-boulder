@@ -165,17 +165,23 @@
   color: #f7f4ff;
 }.home .accent {
   color: #3dfff2;
+}.home .meta-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: calc(36 * var(--rpx));
 }.home .zh {
   display: block;
   position: relative;
-  margin-top: calc(40 * var(--rpx));
+  margin-top: 0;
+  margin-right: calc(16 * var(--rpx));
   color: #c6ff4a;
   font-size: calc(28 * var(--rpx));
   letter-spacing: calc(2 * var(--rpx));
 }.home .when {
   display: block;
   position: relative;
-  margin-top: calc(16 * var(--rpx));
+  margin-top: 0;
   color: #b7b1c9;
   font-size: calc(26 * var(--rpx));
 }.home .facts {

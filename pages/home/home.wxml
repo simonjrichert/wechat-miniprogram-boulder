@@ -13,8 +13,10 @@
 
     <text class="title">{{event.titleTop}}</text>
     <text class="title accent">{{event.titleSub}}</text>
-    <text class="zh">{{event.zh}}</text>
-    <text class="when">{{event.dateLabel}} · {{event.venue}}</text>
+    <view class="meta-row">
+      <text class="zh">{{event.zh}}</text>
+      <text class="when">{{event.dateLabel}} · {{event.venue}}</text>
+    </view>
 
     <view class="facts">
       <view class="fact">

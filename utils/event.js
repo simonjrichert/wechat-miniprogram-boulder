@@ -5,10 +5,10 @@ const event = {
   titleTop: 'Blacklight',
   titleSub: 'bouldering',
   zh: '上海 · 黑光抱石',
-  doorZh: '香蕉抱石 · 11月7日',
-  dateLabel: 'Saturday 7 November 2026',
-  day: '07',
-  month: 'NOV',
+  doorZh: '香蕉抱石 · 12月11日',
+  dateLabel: 'Friday',
+  day: '11',
+  month: 'DEC',
   doors: '18:40',
   duration: '90 min',
   price: 0,
@@ -126,7 +126,7 @@ function findLevel(id) {
 
 function sharePayload() {
   return {
-    title: 'Banana Bouldering · Blacklight bouldering, 7 Nov',
+    title: 'Banana Bouldering · Blacklight bouldering, 11 Dec',
     path: '/pages/home/home'
   }
 }
