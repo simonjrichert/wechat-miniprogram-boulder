@@ -77,16 +77,40 @@ const event = {
     'You need to be 16 or older.'
   ],
   holds: [
-    { id: 1, x: 36, y: 292, size: 52, tone: 'lime', shape: 'jug' },
-    { id: 2, x: 108, y: 236, size: 22, tone: 'cyan', shape: 'pinch' },
-    { id: 3, x: 156, y: 168, size: 34, tone: 'magenta', shape: 'jug' },
-    { id: 4, x: 214, y: 214, size: 16, tone: 'cyan', shape: 'pinch' },
-    { id: 5, x: 248, y: 112, size: 40, tone: 'lime', shape: 'jug' },
-    { id: 6, x: 328, y: 156, size: 20, tone: 'magenta', shape: 'pinch' },
-    { id: 7, x: 368, y: 64, size: 30, tone: 'cyan', shape: 'jug' },
-    { id: 8, x: 452, y: 108, size: 18, tone: 'lime', shape: 'pinch' },
-    { id: 9, x: 508, y: 36, size: 44, tone: 'magenta', shape: 'jug' }
+    { id: 'lf', x: 72, y: 392, w: 30, h: 20, shape: 'foot', tone: 'cyan', turn: -14, mark: '' },
+    { id: 'rf', x: 188, y: 398, w: 28, h: 18, shape: 'foot', tone: 'cyan', turn: 10, mark: '' },
+    { id: 's1', x: 36, y: 308, w: 72, h: 52, shape: 'jug', tone: 'lime', turn: -8, mark: 'mark-start' },
+    { id: 's2', x: 138, y: 328, w: 64, h: 46, shape: 'jug', tone: 'lime', turn: 6, mark: 'mark-start' },
+    { id: 'p1', x: 230, y: 250, w: 34, h: 58, shape: 'pinch', tone: 'magenta', turn: 16, mark: '' },
+    { id: 'c1', x: 292, y: 198, w: 58, h: 20, shape: 'crimp', tone: 'cyan', turn: -6, mark: '' },
+    { id: 'sl', x: 364, y: 140, w: 62, h: 46, shape: 'sloper', tone: 'lime', turn: 4, mark: '' },
+    { id: 'p2', x: 448, y: 96, w: 30, h: 48, shape: 'pinch', tone: 'magenta', turn: -14, mark: '' },
+    { id: 'fin', x: 500, y: 40, w: 74, h: 56, shape: 'jug', tone: 'cyan', turn: 2, mark: 'mark-finish' }
   ]
+}
+
+const holdById = {}
+for (let i = 0; i < event.holds.length; i += 1) {
+  holdById[event.holds[i].id] = event.holds[i]
+}
+const handSequence = ['s1', 's2', 'p1', 'c1', 'sl', 'p2', 'fin']
+event.tape = []
+for (let i = 0; i < handSequence.length - 1; i += 1) {
+  const from = holdById[handSequence[i]]
+  const to = holdById[handSequence[i + 1]]
+  const ax = from.x + from.w / 2
+  const ay = from.y + from.h / 2
+  const bx = to.x + to.w / 2
+  const by = to.y + to.h / 2
+  const dx = bx - ax
+  const dy = by - ay
+  event.tape.push({
+    id: i + 1,
+    x: Math.round(ax),
+    y: Math.round(ay),
+    w: Math.round(Math.sqrt(dx * dx + dy * dy)),
+    rot: Math.round(Math.atan2(dy, dx) * 180 / Math.PI)
+  })
 }
 
 const shoeSizes = []

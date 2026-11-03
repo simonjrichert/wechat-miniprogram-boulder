@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LUMEN Night — browser preview</title>
-  <link rel="stylesheet" href="preview.css?v=4">
+  <link rel="stylesheet" href="preview.css?v=9">
   <style>
     :root {
       --rpx: calc(min(100vw, 430px) / 750);
@@ -79,6 +79,14 @@
 
     .device .bar {
       min-height: calc(88 * var(--rpx));
+    }
+
+    .nav-home {
+      padding-top: 12px;
+    }
+
+    .nav-home .bar {
+      min-height: 0;
     }
 
     .home .page {
@@ -227,6 +235,6 @@
   </div>
   <script src="../utils/event.js"></script>
   <script src="../utils/form.js"></script>
-  <script src="preview.js"></script>
+  <script src="preview.js?v=4"></script>
 </body>
 </html>

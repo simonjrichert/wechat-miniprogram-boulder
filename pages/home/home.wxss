@@ -7,7 +7,7 @@
 
 .hero {
   position: relative;
-  padding-top: 28rpx;
+  padding-top: 4rpx;
   overflow: hidden;
 }
 
@@ -32,21 +32,11 @@
   background: radial-gradient(circle, rgba(61, 255, 242, 0.22), transparent 70%);
 }
 
-.hero-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.kicker {
-  margin-top: 18rpx;
-  color: #9a94ae;
-  font-size: 22rpx;
-  font-weight: 600;
-  letter-spacing: 4rpx;
-}
-
 .date-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
   width: 112rpx;
   height: 112rpx;
   display: flex;
@@ -78,6 +68,7 @@
   position: relative;
   left: 0;
   right: auto;
+  padding-right: 128rpx;
   font-size: 84rpx;
   font-weight: 700;
   line-height: 0.94;
@@ -142,7 +133,7 @@
 
 .wall {
   position: relative;
-  height: 460rpx;
+  height: 500rpx;
   margin-top: 36rpx;
   overflow: hidden;
   border-radius: 28rpx;
@@ -153,17 +144,25 @@
   box-shadow: inset 0 0 80rpx rgba(0, 0, 0, 0.45);
 }
 
+.wall-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .stamp {
   position: absolute;
-  top: 28rpx;
-  right: 24rpx;
-  z-index: 2;
+  top: 16rpx;
+  right: 16rpx;
+  left: auto;
+  z-index: 3;
   padding: 6rpx 12rpx;
   border: 2rpx solid #c6ff4a;
   color: #c6ff4a;
   font-size: 20rpx;
   letter-spacing: 3rpx;
-  transform: rotate(8deg);
+  transform: rotate(-8deg);
   animation: glow 2.8s ease-in-out infinite;
 }
 
@@ -173,63 +172,154 @@
   50% { opacity: 1; }
 }
 
-.tape {
+.route-tape {
   position: absolute;
-  height: 3rpx;
-  background: rgba(198, 255, 74, 0.7);
-  box-shadow: 0 0 10rpx rgba(198, 255, 74, 0.65);
-}
-
-.tape-a {
-  left: 64rpx;
-  top: 318rpx;
-  width: 130rpx;
-  transform: rotate(-26deg);
-}
-
-.tape-b {
-  left: 176rpx;
-  top: 214rpx;
-  width: 150rpx;
-  transform: rotate(-34deg);
-}
-
-.tape-c {
-  left: 300rpx;
-  top: 132rpx;
-  width: 210rpx;
-  transform: rotate(-20deg);
+  z-index: 1;
+  height: 6rpx;
+  margin-top: -3rpx;
+  transform-origin: 0 50%;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(198, 255, 74, 0.95) 0 12rpx,
+    rgba(198, 255, 74, 0.15) 12rpx 18rpx
+  );
+  box-shadow: 0 0 8rpx rgba(198, 255, 74, 0.75);
 }
 
 .hold {
   position: absolute;
+  z-index: 2;
+}
+
+.hold-ring,
+.hold-lip,
+.hold-bolt {
+  position: absolute;
+}
+
+.hold-bolt {
+  left: 46%;
+  top: 40%;
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #120e18;
+  box-shadow: inset 0 0 0 1rpx rgba(255, 255, 255, 0.35);
 }
 
 .shape-jug {
-  border-radius: 46%;
+  border-radius: 22rpx 28rpx 34rpx 18rpx;
+}
+
+.shape-jug .hold-bolt {
+  top: 24%;
+  left: 34%;
+}
+
+.shape-jug .hold-lip {
+  left: 12%;
+  right: 14%;
+  bottom: 10%;
+  height: 36%;
+  border-radius: 10rpx 10rpx 18rpx 18rpx;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 4rpx 0 rgba(255, 255, 255, 0.45);
+}
+
+.shape-crimp {
+  border-radius: 7rpx;
+}
+
+.shape-crimp .hold-lip {
+  left: 8%;
+  right: 8%;
+  top: 16%;
+  height: 28%;
+  border-radius: 6rpx;
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .shape-pinch {
-  border-radius: 10rpx;
-  transform: rotate(28deg);
+  border-radius: 46%;
+}
+
+.shape-pinch .hold-lip {
+  top: 14%;
+  bottom: 14%;
+  left: 12%;
+  width: 22%;
+  border-radius: 40%;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: inset -2rpx 0 0 rgba(255, 255, 255, 0.28);
+}
+
+.shape-sloper {
+  border-radius: 50%;
+}
+
+.shape-sloper .hold-lip {
+  left: 16%;
+  top: 12%;
+  width: 38%;
+  height: 30%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.shape-foot {
+  border-radius: 42% 48% 40% 46%;
+}
+
+.shape-foot .hold-lip {
+  left: 18%;
+  right: 18%;
+  bottom: 16%;
+  height: 32%;
+  border-radius: 40%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.shape-foot .hold-bolt {
+  width: 5rpx;
+  height: 5rpx;
+}
+
+.mark-start .hold-ring {
+  left: -12rpx;
+  top: -12rpx;
+  right: -12rpx;
+  bottom: -12rpx;
+  border: 3rpx dashed #c6ff4a;
+  border-radius: 50%;
+  box-shadow: 0 0 10rpx rgba(198, 255, 74, 0.85);
+}
+
+.mark-finish .hold-ring {
+  left: -10rpx;
+  top: -10rpx;
+  right: -10rpx;
+  bottom: -10rpx;
+  border: 3rpx solid #3dfff2;
+  border-radius: 16rpx;
+  box-shadow: 0 0 14rpx rgba(61, 255, 242, 0.9);
 }
 
 .tone-cyan {
-  background: #123f3f;
-  border: 2rpx solid #3dfff2;
-  box-shadow: 0 0 18rpx rgba(61, 255, 242, 0.9);
+  background: radial-gradient(circle at 32% 28%, #1d6d68, #0c2a2a 72%);
+  border: 3rpx solid #3dfff2;
+  box-shadow: 0 0 16rpx rgba(61, 255, 242, 0.85), inset 0 -8rpx 10rpx rgba(0, 0, 0, 0.45);
 }
 
 .tone-magenta {
-  background: #3a1030;
-  border: 2rpx solid #ff2bd6;
-  box-shadow: 0 0 18rpx rgba(255, 43, 214, 0.85);
+  background: radial-gradient(circle at 32% 28%, #7a2458, #2a0c22 72%);
+  border: 3rpx solid #ff2bd6;
+  box-shadow: 0 0 16rpx rgba(255, 43, 214, 0.8), inset 0 -8rpx 10rpx rgba(0, 0, 0, 0.45);
 }
 
 .tone-lime {
-  background: #24340c;
-  border: 2rpx solid #c6ff4a;
-  box-shadow: 0 0 16rpx rgba(198, 255, 74, 0.8);
+  background: radial-gradient(circle at 32% 28%, #4d6420, #1c240c 72%);
+  border: 3rpx solid #c6ff4a;
+  box-shadow: 0 0 14rpx rgba(198, 255, 74, 0.75), inset 0 -8rpx 10rpx rgba(0, 0, 0, 0.45);
 }
 
 .caption {
@@ -276,6 +366,7 @@
 
 .slot-d {
   flex: 1;
+  min-width: 0;
   color: #d8d3e8;
   font-size: 26rpx;
   line-height: 1.45;

@@ -4,6 +4,7 @@ const bookingStore = require('../../utils/booking')
 Page({
   data: {
     pad: 64,
+    foldMin: 520,
     event: event,
     booking: null
   },
@@ -18,8 +19,11 @@ Page({
 
   sync() {
     const nav = getApp().globalData.nav
+    const win = wx.getWindowInfo ? wx.getWindowInfo() : wx.getSystemInfoSync()
+    const windowHeight = win.windowHeight || 640
     this.setData({
       pad: nav.total,
+      foldMin: Math.max(320, windowHeight - nav.total),
       booking: bookingStore.getBooking()
     })
   },

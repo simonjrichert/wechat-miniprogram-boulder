@@ -93,7 +93,9 @@ function applyPageClass() {
 
 function render(resetScroll) {
   applyPageClass()
-  document.getElementById('nav').innerHTML = navHtml()
+  const nav = document.getElementById('nav')
+  nav.className = state.page === 'home' ? 'nav nav-home' : 'nav'
+  nav.innerHTML = navHtml()
   document.getElementById('scroll').innerHTML = bodyHtml()
   const dock = document.getElementById('dock')
   if (state.page === 'home') {
@@ -106,6 +108,17 @@ function render(resetScroll) {
     dock.innerHTML = ''
   }
   if (resetScroll) document.getElementById('scroll').scrollTop = 0
+  placeFold()
+}
+
+function placeFold() {
+  if (state.page !== 'home') return
+  const scroll = document.getElementById('scroll')
+  const fold = scroll.querySelector('.fold')
+  const page = scroll.querySelector('.page')
+  if (!fold || !page) return
+  const padTop = parseFloat(getComputedStyle(page).paddingTop) || 0
+  fold.style.minHeight = (scroll.clientHeight - padTop) + 'px'
 }
 
 function show(page, replace) {
@@ -128,7 +141,7 @@ function back() {
 
 function navHtml() {
   if (state.page === 'home') {
-    return '<div class="bar"><div class="side"><div class="brand"><span class="word">LUMEN</span><i class="dot"></i></div></div></div>'
+    return '<div class="bar"></div>'
   }
   const title = state.page === 'signup' ? 'Reserve' : 'Your pass'
   return '<div class="bar"><div class="side"><button type="button" class="back" data-action="back"><i class="chevron"></i><span>Back</span></button></div><span class="nav-title">' + title + '</span></div>'
@@ -150,9 +163,6 @@ function bodyHtml() {
 
 function homeHtml() {
   const booking = load()
-  const holds = event.holds.map((hold) => {
-    return '<i class="hold tone-' + esc(hold.tone) + ' shape-' + esc(hold.shape) + '" style="left:calc(' + hold.x + ' * var(--rpx));top:calc(' + hold.y + ' * var(--rpx));width:calc(' + hold.size + ' * var(--rpx));height:calc(' + hold.size + ' * var(--rpx))"></i>'
-  }).join('')
   const slots = event.timeline.map((item) => {
     return '<div class="slot"><span class="slot-t">' + esc(item.t) + '</span><span class="slot-d">' + esc(item.d) + '</span></div>'
   }).join('')
@@ -167,7 +177,7 @@ function homeHtml() {
     return '<div class="rule"><i class="dash"></i><span class="rule-t">' + esc(item) + '</span></div>'
   }).join('')
 
-  return '<div class="page"><div class="hero"><i class="orb orb-a"></i><i class="orb orb-b"></i><div class="hero-top"><span class="kicker">' + esc(event.series) + '</span><div class="date-badge"><span class="date-day">' + esc(event.day) + '</span><span class="date-mon">' + esc(event.month) + '</span></div></div><span class="title">' + esc(event.titleTop) + '</span><span class="title accent">' + esc(event.titleSub) + '</span><span class="zh">' + esc(event.zh) + '</span><span class="when">' + esc(event.dateLabel) + ' · ' + esc(event.area) + '</span><div class="facts"><div class="fact"><span class="fact-k">Doors</span><span class="fact-v">' + esc(event.doors) + '</span></div><div class="fact"><span class="fact-k">On the wall</span><span class="fact-v">90 min</span></div><div class="fact"><span class="fact-k">Ticket</span><span class="fact-v">¥' + esc(event.price) + '</span></div></div></div><div class="wall"><span class="stamp">UV ONLY</span><i class="tape tape-a"></i><i class="tape tape-b"></i><i class="tape tape-c"></i>' + holds + '</div><span class="caption">Holds and tape fluoresce. The room stays dark.</span><div class="section"><span class="h">The night</span>' + slots + '</div><div class="section"><span class="h">Waves</span><span class="intro">The room holds 24 climbers a wave, so the wall stays uncrowded.</span>' + waves + '</div><div class="section"><span class="h">The ticket</span><div class="price-row"><span class="big">¥' + esc(event.price) + '</span><span class="per">' + esc(event.priceNote) + '</span></div>' + includes + '</div><div class="section"><span class="h">On the wall</span>' + rules + '</div><div class="section"><span class="h">The room</span><div class="place"><span class="place-name">' + esc(event.venue) + '</span><span class="place-line">' + esc(event.gate) + '</span><span class="place-line">' + esc(event.gateZh) + '</span><span class="place-dim">' + esc(event.area) + ' · ' + esc(event.city) + '</span><span class="place-note">Wave 2 check-in opens at 20:00 and closes at 20:20. Come at 18:10 if you are renting shoes.</span></div></div></div>'
+  return '<div class="page"><div class="fold"><div class="hero"><i class="orb orb-a"></i><i class="orb orb-b"></i><div class="date-badge"><span class="date-day">' + esc(event.day) + '</span><span class="date-mon">' + esc(event.month) + '</span></div><span class="title">' + esc(event.titleTop) + '</span><span class="title accent">' + esc(event.titleSub) + '</span><span class="zh">' + esc(event.zh) + '</span><span class="when">' + esc(event.dateLabel) + ' · ' + esc(event.area) + '</span><div class="facts"><div class="fact"><span class="fact-k">Doors</span><span class="fact-v">' + esc(event.doors) + '</span></div><div class="fact"><span class="fact-k">On the wall</span><span class="fact-v">90 min</span></div><div class="fact"><span class="fact-k">Ticket</span><span class="fact-v">¥' + esc(event.price) + '</span></div></div></div><div class="wall"><img class="wall-art" src="../images/wall.svg?v=3" alt=""><span class="stamp">UV ONLY</span></div><span class="caption">Holds and tape fluoresce. The room stays dark.</span></div><div class="section"><span class="h">The night</span>' + slots + '</div><div class="section"><span class="h">Waves</span><span class="intro">The room holds 24 climbers a wave, so the wall stays uncrowded.</span>' + waves + '</div><div class="section"><span class="h">The ticket</span><div class="price-row"><span class="big">¥' + esc(event.price) + '</span><span class="per">' + esc(event.priceNote) + '</span></div>' + includes + '</div><div class="section"><span class="h">On the wall</span>' + rules + '</div><div class="section"><span class="h">The room</span><div class="place"><span class="place-name">' + esc(event.venue) + '</span><span class="place-line">' + esc(event.gate) + '</span><span class="place-line">' + esc(event.gateZh) + '</span><span class="place-dim">' + esc(event.area) + ' · ' + esc(event.city) + '</span><span class="place-note">Wave 2 check-in opens at 20:00 and closes at 20:20. Come at 18:10 if you are renting shoes.</span></div></div></div>'
 }
 
 function signupHtml() {

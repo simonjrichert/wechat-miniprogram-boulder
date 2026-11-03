@@ -1,16 +1,14 @@
 <view class="page" style="padding-top: {{pad}}px;">
   <nav-bar />
 
+  <view class="fold" style="min-height: {{foldMin}}px;">
   <view class="hero">
     <view class="orb orb-a"></view>
     <view class="orb orb-b"></view>
 
-    <view class="hero-top">
-      <text class="kicker">{{event.series}}</text>
-      <view class="date-badge">
-        <text class="date-day">{{event.day}}</text>
-        <text class="date-mon">{{event.month}}</text>
-      </view>
+    <view class="date-badge">
+      <text class="date-day">{{event.day}}</text>
+      <text class="date-mon">{{event.month}}</text>
     </view>
 
     <text class="title">{{event.titleTop}}</text>
@@ -35,18 +33,11 @@
   </view>
 
   <view class="wall">
+    <image class="wall-art" src="/images/wall.svg" mode="aspectFit" />
     <text class="stamp">UV ONLY</text>
-    <view class="tape tape-a"></view>
-    <view class="tape tape-b"></view>
-    <view class="tape tape-c"></view>
-    <view
-      wx:for="{{event.holds}}"
-      wx:key="id"
-      class="hold tone-{{item.tone}} shape-{{item.shape}}"
-      style="left: {{item.x}}rpx; top: {{item.y}}rpx; width: {{item.size}}rpx; height: {{item.size}}rpx;"
-    ></view>
   </view>
   <text class="caption">Holds and tape fluoresce. The room stays dark.</text>
+  </view>
 
   <view class="section">
     <text class="h">The night</text>
