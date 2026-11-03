@@ -2,12 +2,12 @@
   <nav-bar back="{{true}}" title="Reserve" />
 
   <text class="kicker">{{event.series}}</text>
-  <text class="lead">{{editing ? 'Edit your pass' : 'Reserve a wave'}}</text>
-  <text class="sub">{{event.dateLabel}} · {{event.area}}</text>
+  <text class="lead">{{editing ? 'Edit your pass' : 'Reserve your spot'}}</text>
+  <text class="sub">{{event.dateLabel}} · {{event.venue}}</text>
   <text wx:if="{{editing}}" class="keep">The door code stays the same.</text>
 
   <view class="block">
-    <text class="label">Wave</text>
+    <text class="label">Session</text>
     <view
       wx:for="{{event.waves}}"
       wx:key="id"

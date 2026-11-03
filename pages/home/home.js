@@ -23,7 +23,7 @@ Page({
     const windowHeight = win.windowHeight || 640
     this.setData({
       pad: nav.total,
-      foldMin: Math.max(320, windowHeight - nav.total),
+      foldMin: Math.max(320, windowHeight - nav.total - 96),
       booking: bookingStore.getBooking()
     })
   },

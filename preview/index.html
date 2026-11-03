@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LUMEN Night — browser preview</title>
-  <link rel="stylesheet" href="preview.css?v=9">
+  <title>Banana Bouldering — browser preview</title>
+  <link rel="stylesheet" href="preview.css?v=12">
   <style>
     :root {
-      --rpx: calc(min(100vw, 430px) / 750);
+      --screen-w: min(390px, calc(100vw - 96px));
+      --screen-h: min(844px, calc(100dvh - 148px));
+      --rpx: calc(var(--screen-w) / 750);
     }
 
     body {
       margin: 0;
-      background: #16141c;
+      background: #0c0b10;
       color: #f4f0ff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     }
@@ -23,27 +25,106 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       box-sizing: border-box;
+      padding: 16px 12px 20px;
+      background:
+        radial-gradient(circle at 50% 0%, #2c2640 0%, transparent 42%),
+        #0c0b10;
     }
 
     .note {
-      margin: 0;
-      padding: 12px 16px 8px;
+      margin: 0 0 14px;
+      padding: 0 16px;
       color: #9a94ae;
       font-size: 13px;
       line-height: 1.4;
       text-align: center;
     }
 
+    .iphone {
+      position: relative;
+      box-sizing: border-box;
+      width: calc(var(--screen-w) + 8px);
+      height: calc(var(--screen-h) + 8px);
+      flex: 0 0 auto;
+      padding: 4px;
+      border-radius: 42px;
+      background: #2a2a2e;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+        0 28px 70px rgba(0, 0, 0, 0.55);
+    }
+
+    .hw {
+      position: absolute;
+      width: 4px;
+      border-radius: 2px;
+      background: linear-gradient(#6a6a72, #1a1a1e);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+    }
+
+    .hw-silent {
+      left: -3px;
+      top: 15%;
+      height: 4%;
+    }
+
+    .hw-vol {
+      left: -3px;
+      height: 8%;
+    }
+
+    .hw-vol-up {
+      top: 22%;
+    }
+
+    .hw-vol-down {
+      top: 32%;
+    }
+
+    .hw-power {
+      right: -3px;
+      top: 24%;
+      height: 13%;
+    }
+
     .device {
-      width: min(100vw, 430px);
-      flex: 1;
-      min-height: 0;
+      width: 100%;
+      height: 100%;
       position: relative;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      border-radius: 38px;
       background: #07060b;
+    }
+
+    .island {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      z-index: 70;
+      width: 122px;
+      height: 36px;
+      transform: translateX(-50%);
+      border-radius: 20px;
+      background: #000;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+      pointer-events: none;
+    }
+
+    .home-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 8px;
+      z-index: 70;
+      width: 132px;
+      height: 5px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      pointer-events: none;
     }
 
     .device * {
@@ -74,7 +155,7 @@
     }
 
     .device .nav {
-      padding-top: 14px;
+      padding-top: 54px;
     }
 
     .device .bar {
@@ -82,7 +163,15 @@
     }
 
     .nav-home {
-      padding-top: 12px;
+      padding-top: 58px;
+    }
+
+    .device .date-badge {
+      right: 0;
+    }
+
+    .device .dock {
+      padding-bottom: 26px;
     }
 
     .nav-home .bar {
@@ -201,14 +290,15 @@
       display: none !important;
     }
 
-    @media (min-width: 520px) {
-      .stage {
-        padding: 8px 0 16px;
+    @media (max-width: 420px) {
+      .hw {
+        display: none;
       }
 
-      .device {
-        border-radius: 28px;
-        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      .iphone {
+        width: min(100vw - 12px, calc(var(--screen-w) + 8px));
+        padding: 3px;
+        border-radius: 36px;
       }
     }
   </style>
@@ -216,25 +306,33 @@
 <body>
   <div class="stage">
     <p class="note">Browser preview of the miniprogram. The real project still opens in WeChat Developer Tools.</p>
-    <div class="device home" id="device">
-      <div class="nav" id="nav"></div>
-      <div class="scroll" id="scroll"></div>
-      <div class="dock" id="dock"></div>
-      <div class="modal" id="modal" hidden>
-        <div class="sheet">
-          <p class="sheet-title">Give up this spot?</p>
-          <p class="sheet-copy">The pass code on this phone will be deleted.</p>
-          <div class="sheet-actions">
-            <button type="button" class="ghost" data-action="keep">Keep</button>
-            <button type="button" class="danger" data-action="drop">Drop</button>
+    <div class="iphone">
+      <span class="hw hw-silent"></span>
+      <span class="hw hw-vol hw-vol-up"></span>
+      <span class="hw hw-vol hw-vol-down"></span>
+      <span class="hw hw-power"></span>
+      <div class="device home" id="device">
+        <div class="island"></div>
+        <div class="home-indicator"></div>
+        <div class="nav" id="nav"></div>
+        <div class="scroll" id="scroll"></div>
+        <div class="dock" id="dock"></div>
+        <div class="modal" id="modal" hidden>
+          <div class="sheet">
+            <p class="sheet-title">Give up this spot?</p>
+            <p class="sheet-copy">The pass code on this phone will be deleted.</p>
+            <div class="sheet-actions">
+              <button type="button" class="ghost" data-action="keep">Keep</button>
+              <button type="button" class="danger" data-action="drop">Drop</button>
+            </div>
           </div>
         </div>
+        <div class="toast" id="toast" hidden></div>
       </div>
-      <div class="toast" id="toast" hidden></div>
     </div>
   </div>
-  <script src="../utils/event.js"></script>
+  <script src="../utils/event.js?v=3"></script>
   <script src="../utils/form.js"></script>
-  <script src="preview.js?v=4"></script>
+  <script src="preview.js?v=5"></script>
 </body>
 </html>

@@ -1,37 +1,30 @@
 // Sample night. Replace the date, price, and door before you publish.
 ;(function () {
 const event = {
-  series: 'LUMEN Night 03',
+  series: 'Banana Bouldering',
   titleTop: 'Blacklight',
   titleSub: 'bouldering',
   zh: '上海 · 黑光抱石',
-  doorZh: '黑光抱石 · 11月7日 · 杨浦',
+  doorZh: '香蕉抱石 · 11月7日',
   dateLabel: 'Saturday 7 November 2026',
   day: '07',
   month: 'NOV',
-  doors: '18:10',
-  duration: '90 minutes',
+  doors: '18:40',
+  duration: '90 min',
   price: 0,
-  priceNote: 'Sponsors pay for the night. One wave each.',
+  priceNote: 'Sponsors pay for the night.',
   city: 'Shanghai',
-  area: 'Yangpu riverside',
-  venue: 'LUMEN Room',
-  gate: 'Gate 2, riverside warehouse',
-  gateZh: '杨浦滨江仓库 2 号门',
+  area: '',
+  venue: 'Banana Bouldering',
+  gate: 'Shanghai',
+  gateZh: '香蕉抱石',
   waves: [
     {
-      id: 'one',
-      name: 'Wave 1',
-      time: '18:30–20:00',
-      note: 'Starts with a walk along the easy traverse.',
-      cap: '24 climbers'
-    },
-    {
-      id: 'two',
-      name: 'Wave 2',
-      time: '20:30–22:00',
-      note: 'Dark from the first hold. No intro.',
-      cap: '24 climbers'
+      id: 'night',
+      name: 'One session',
+      time: '19:00–21:00',
+      note: 'Lights down the whole time.',
+      cap: 'About 50 climbers'
     }
   ],
   levels: [
@@ -57,17 +50,14 @@ const event = {
     }
   ],
   timeline: [
-    { t: '18:10', d: 'Doors. Tea, liquid chalk, and shoe sizes at the desk.' },
-    { t: '18:30', d: 'Wave 1. A short walk on the easy traverse, then the lights stay down.' },
-    { t: '20:00', d: 'Wave 1 steps out so the room can go dark again.' },
-    { t: '20:30', d: 'Wave 2 starts straight on the wall.' },
-    { t: '22:00', d: 'Out. The warehouse lights come back on.' }
+    { t: '18:40', d: 'Doors. Liquid chalk and shoe sizes at the desk.' },
+    { t: '19:00', d: 'On the wall. The lights stay down until 21:00.' },
+    { t: '21:00', d: 'Out. The gym lights come back on.' }
   ],
   includes: [
     '90 minutes on the UV wall',
     'Liquid chalk — loose chalk hangs in the beam',
-    'Shoe rental, EU 35–47',
-    'A canned tea at the desk'
+    'Shoe rental, EU 35–47'
   ],
   rules: [
     'No torches, phone lights, or camera flash on the wall.',
@@ -136,7 +126,7 @@ function findLevel(id) {
 
 function sharePayload() {
   return {
-    title: 'LUMEN Night 03 · Blacklight bouldering, 7 Nov in Yangpu',
+    title: 'Banana Bouldering · Blacklight bouldering, 7 Nov',
     path: '/pages/home/home'
   }
 }

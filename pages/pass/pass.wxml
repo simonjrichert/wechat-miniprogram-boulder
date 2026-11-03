@@ -25,8 +25,8 @@
           <text class="v">{{event.dateLabel}}</text>
         </view>
         <view class="row">
-          <text class="k">Wave</text>
-          <text class="v">{{booking.sessionName}} · {{booking.sessionTime}}</text>
+          <text class="k">Time</text>
+          <text class="v">{{booking.sessionTime}}</text>
         </view>
         <view class="row">
           <text class="k">Level</text>
@@ -44,7 +44,6 @@
 
         <view class="where">
           <text class="where-name">{{event.venue}}</text>
-          <text class="where-line">{{event.gate}}</text>
           <text class="where-line">{{event.gateZh}}</text>
           <text class="where-door">{{door}}</text>
         </view>
@@ -59,7 +58,7 @@
 
   <block wx:else>
     <text class="lead">No pass on this phone</text>
-    <text class="sub">Reserve a wave and the door code will show up here.</text>
+    <text class="sub">Reserve a spot and the door code will show up here.</text>
     <button class="btn empty-btn" hover-class="btn-hover" bindtap="goSignup">Reserve</button>
   </block>
 </view>

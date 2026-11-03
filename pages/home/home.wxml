@@ -14,7 +14,7 @@
     <text class="title">{{event.titleTop}}</text>
     <text class="title accent">{{event.titleSub}}</text>
     <text class="zh">{{event.zh}}</text>
-    <text class="when">{{event.dateLabel}} · {{event.area}}</text>
+    <text class="when">{{event.dateLabel}} · {{event.venue}}</text>
 
     <view class="facts">
       <view class="fact">
@@ -23,7 +23,7 @@
       </view>
       <view class="fact">
         <text class="fact-k">On the wall</text>
-        <text class="fact-v">90 min</text>
+        <text class="fact-v">{{event.duration}}</text>
       </view>
       <view class="fact">
         <text class="fact-k">Ticket</text>
@@ -48,8 +48,8 @@
   </view>
 
   <view class="section">
-    <text class="h">Waves</text>
-    <text class="intro">The room holds 24 climbers a wave, so the wall stays uncrowded.</text>
+    <text class="h">The session</text>
+    <text class="intro">One sitting, about 50 climbers.</text>
     <view
       wx:for="{{event.waves}}"
       wx:key="id"
@@ -59,10 +59,9 @@
       data-id="{{item.id}}"
     >
       <view class="wave-top">
-        <text class="wave-name">{{item.name}}</text>
-        <text class="wave-go">{{booking && booking.sessionId === item.id ? 'Your wave' : 'Choose'}}</text>
+        <text class="wave-name">{{item.time}}</text>
+        <text class="wave-go">{{booking && booking.sessionId === item.id ? "You're in" : 'Reserve'}}</text>
       </view>
-      <text class="wave-time">{{item.time}}</text>
       <text class="wave-note">{{item.note}} {{item.cap}}.</text>
     </view>
   </view>
@@ -91,10 +90,9 @@
     <text class="h">The room</text>
     <view class="place">
       <text class="place-name">{{event.venue}}</text>
-      <text class="place-line">{{event.gate}}</text>
       <text class="place-line">{{event.gateZh}}</text>
-      <text class="place-dim">{{event.area}} · {{event.city}}</text>
-      <text class="place-note">Wave 2 check-in opens at 20:00 and closes at 20:20. Come at 18:10 if you are renting shoes.</text>
+      <text class="place-dim">{{event.city}}</text>
+      <text class="place-note">Doors at 18:40. Shoe sizes are sorted at the desk.</text>
     </view>
   </view>
 </view>
@@ -110,7 +108,7 @@
   <block wx:else>
     <view class="dock-copy">
       <text class="dock-code">¥{{event.price}}</text>
-      <text class="dock-sub">{{event.duration}} · Yangpu</text>
+      <text class="dock-sub">{{event.duration}} · {{event.venue}}</text>
     </view>
     <button class="btn" hover-class="btn-hover" bindtap="goSignup">Reserve</button>
   </block>

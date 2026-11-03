@@ -77,7 +77,7 @@ Page({
     const phone = normalizePhone(data.phone)
 
     if (!data.sessionId) {
-      this.setData({ error: 'Pick a wave.' })
+      this.setData({ error: 'The session is missing.' })
       return
     }
     if (!data.levelId) {
