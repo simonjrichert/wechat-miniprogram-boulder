@@ -129,8 +129,8 @@
   background: radial-gradient(circle, rgba(61, 255, 242, 0.22), transparent 70%);
 }.home .date-badge {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: calc(44 * var(--rpx));
+  right: calc(36 * var(--rpx));
   z-index: 2;
   width: calc(100 * var(--rpx));
   height: calc(100 * var(--rpx));
@@ -157,7 +157,7 @@
   position: relative;
   left: 0;
   right: auto;
-  padding-right: calc(120 * var(--rpx));
+  padding-right: calc(156 * var(--rpx));
   font-size: calc(76 * var(--rpx));
   font-weight: 700;
   line-height: 1.02;
@@ -193,17 +193,16 @@
 }.home .fact {
   flex: 1;
   min-width: 0;
-  padding: calc(26 * var(--rpx)) calc(16 * var(--rpx)) calc(26 * var(--rpx)) 0;
-}.home .fact:first-child {
-  padding-left: calc(8 * var(--rpx));
+  padding: calc(26 * var(--rpx)) calc(12 * var(--rpx));
+  text-align: center;
 }.home .fact + .fact {
-  padding-left: calc(16 * var(--rpx));
   border-left: calc(1 * var(--rpx)) solid rgba(255, 255, 255, 0.08);
 }.home .fact-k {
   display: block;
   color: #9a94ae;
   font-size: calc(20 * var(--rpx));
   letter-spacing: calc(1 * var(--rpx));
+  text-align: center;
   text-transform: uppercase;
 }.home .fact-v {
   display: block;
@@ -211,6 +210,7 @@
   color: #f4f0ff;
   font-size: calc(32 * var(--rpx));
   font-weight: 700;
+  text-align: center;
 }.home .fold {
   display: flex;
   flex-direction: column;
@@ -630,13 +630,7 @@
   font-size: calc(26 * var(--rpx));
 }.signup .submit {
   width: 100%;
-  margin-top: calc(28 * var(--rpx));
-}.signup .fine {
-  display: block;
-  margin-top: calc(16 * var(--rpx));
-  color: #6e6884;
-  font-size: calc(22 * var(--rpx));
-  line-height: 1.45;
+  margin-top: calc(40 * var(--rpx));
 }
 
 .pass .page {

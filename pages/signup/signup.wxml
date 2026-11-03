@@ -80,5 +80,4 @@
   <text wx:if="{{error}}" class="error">{{error}}</text>
 
   <button class="btn submit" hover-class="btn-hover" bindtap="submit">{{editing ? 'Update pass' : 'Reserve'}}</button>
-  <text class="fine">Your name, mobile, and pass stay on this phone. Nothing is sent to a server yet.</text>
 </view>
