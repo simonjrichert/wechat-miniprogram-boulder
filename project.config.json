@@ -1,7 +1,9 @@
 {
   "description": "Banana Bouldering — blacklight bouldering signup",
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      { "type": "folder", "value": "web" }
+    ],
     "include": []
   },
   "setting": {
