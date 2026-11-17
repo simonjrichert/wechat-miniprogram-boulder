@@ -1,30 +1,37 @@
 // Sample night. Replace the date, price, and door before you publish.
 ;(function () {
 const event = {
-  series: 'Banana Bouldering',
+  series: 'Da Zizai',
   titleTop: 'Blacklight',
   titleSub: 'bouldering',
   zh: '上海 · 黑光抱石',
-  doorZh: '香蕉抱石 · 12月11日',
+  doorZh: 'Da Zizai · 12月11日',
   dateLabel: 'Friday',
   day: '11',
   month: 'DEC',
   doors: '19:00',
-  duration: '90 min',
-  price: 0,
-  priceNote: 'Sponsors pay for the night.',
+  duration: '2 hr',
+  price: 88,
+  priceNote: 'Per person.',
   city: 'Shanghai',
   area: '',
-  venue: 'Banana Bouldering',
+  venue: 'Da Zizai',
   gate: 'Shanghai',
-  gateZh: '香蕉抱石',
+  gateZh: 'Roaring Climbing Gym',
   waves: [
     {
-      id: 'night',
-      name: 'One session',
+      id: 'one',
+      name: 'Wave 1',
       time: '19:00–21:00',
-      note: 'Lights down the whole time.',
-      cap: 'About 50 climbers'
+      note: 'Two hours on the wall.',
+      cap: '100 climbers'
+    },
+    {
+      id: 'two',
+      name: 'Wave 2',
+      time: '21:00–23:00',
+      note: 'Two hours on the wall.',
+      cap: '100 climbers'
     }
   ],
   levels: [
@@ -50,12 +57,12 @@ const event = {
     }
   ],
   timeline: [
-    { t: '19:00', d: 'Entry. Liquid chalk and shoe sizes at the desk.' },
-    { t: '19:15', d: 'Climbing starts. 90 minutes on the wall.' },
-    { t: '21:00', d: 'End of the event. The gym lights come back on.' }
+    { t: '19:00', d: 'Wave 1. Entry, then two hours on the wall.' },
+    { t: '21:00', d: 'Wave 2 starts. Wave 1 ends.' },
+    { t: '23:00', d: 'End of the event. The gym lights come back on.' }
   ],
   includes: [
-    '90 minutes on the UV wall',
+    '2 hours on the UV wall',
     'Liquid chalk',
     'Shoe rental, EU 35–47'
   ],
@@ -64,7 +71,7 @@ const event = {
     'White cotton glows. Dark clothes disappear.',
     'Bouldering only. Keep your feet over the mat.',
     'One person on a problem at a time.',
-    'You need to be 16 or older.'
+    'You need to be 18 or older.'
   ],
   holds: [
     { id: 'lf', x: 72, y: 392, w: 30, h: 20, shape: 'foot', tone: 'cyan', turn: -14, mark: '' },
@@ -126,7 +133,7 @@ function findLevel(id) {
 
 function sharePayload() {
   return {
-    title: 'Banana Bouldering · Blacklight bouldering, 11 Dec',
+    title: 'Da Zizai · Blacklight bouldering, 11 Dec',
     path: '/pages/home/home'
   }
 }

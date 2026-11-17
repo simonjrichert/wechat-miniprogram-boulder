@@ -74,7 +74,7 @@
     <view class="tick {{waiver ? 'on' : ''}}">
       <view wx:if="{{waiver}}" class="tick-mark"></view>
     </view>
-    <text class="agree-copy">I am 16 or older. I will not use a torch, phone light, or flash on the wall.</text>
+    <text class="agree-copy">I am 18 or older. I will not use a torch, phone light, or flash on the wall.</text>
   </view>
 
   <text wx:if="{{error}}" class="error">{{error}}</text>

@@ -7,10 +7,16 @@ function maskPhone(phone) {
   return value.slice(0, 3) + ' **** ' + value.slice(-4)
 }
 
+function waveStart(booking) {
+  const time = String(booking.sessionTime || '19:00')
+  return time.split('–')[0].split('-')[0]
+}
+
 function doorHint(booking) {
   if (!booking) return ''
-  if (booking.rental) return 'Come at 19:00 for shoe sizes.'
-  return 'Entry at 19:00.'
+  const start = waveStart(booking)
+  if (booking.rental) return 'Come at ' + start + ' for shoe sizes.'
+  return 'Entry at ' + start + '.'
 }
 
 Page({

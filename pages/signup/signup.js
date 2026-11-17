@@ -93,7 +93,7 @@ Page({
       return
     }
     if (!data.waiver) {
-      this.setData({ error: 'Confirm you are 16 or older, and that you will keep the wall dark.' })
+      this.setData({ error: 'Confirm you are 18 or older, and that you will keep the wall dark.' })
       return
     }
 

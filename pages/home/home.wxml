@@ -51,7 +51,7 @@
 
   <view class="section">
     <text class="h">The session</text>
-    <text class="intro">One sitting, about 50 climbers.</text>
+    <text class="intro">Two waves, 100 climbers at a time.</text>
     <view
       wx:for="{{event.waves}}"
       wx:key="id"
@@ -94,7 +94,7 @@
       <text class="place-name">{{event.venue}}</text>
       <text class="place-line">{{event.gateZh}}</text>
       <text class="place-dim">{{event.city}}</text>
-      <text class="place-note">Entry at 19:00. Shoe sizes are sorted at the desk.</text>
+      <text class="place-note">Wave 1 starts at 19:00. Shoe sizes are sorted at the desk.</text>
     </view>
   </view>
 </view>
